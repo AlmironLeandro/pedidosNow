@@ -1,5 +1,21 @@
-<div class="box flex-wrap d-flex col-12">
-    <div class="box-item  animate__animated animate__backInLeft" *ngFor="let item of [1,1,1,1,1,1,1,1,1,1] let i = index;">
-        {{i}}
+<div class="box flex-wrap d-flex ">
+    <div class="box-item  animate__animated animate__backInLeft " *ngFor="let item of hamburgers let i = index;">
+     
+        <div class="item-atributes">
+            <div class="icon-plus">
+                <i class="uil uil-plus"></i>
+            </div>
+            <div class="item">
+
+                <p>{{item.nombre}}</p>
+            </div>
+            <div class="item">
+                <p>{{'Costo: '+item.valor}}</p>
+            </div>
+        </div>
+        <img class="img-hamburger" [src]=item.ulrImg alt="hamburger">
+        <div class="buttom text-center">
+            <button type="button" class="btn btn-light">Agregar</button>
+        </div>
     </div>
 </div>
