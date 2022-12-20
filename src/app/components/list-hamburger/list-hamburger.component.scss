@@ -1,0 +1,13 @@
+.box
+{
+    background-color: var(--color-3);
+    justify-content: center;
+    .box-item
+    {
+        padding: 8rem;
+        background-color: var(--color-1);
+        margin: 2rem;
+        
+    }
+}
+

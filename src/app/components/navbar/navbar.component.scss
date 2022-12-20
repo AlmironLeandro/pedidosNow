@@ -1,0 +1,26 @@
+.navbar {
+    background-color: var(--color-1);
+
+    .navbar-brand {
+        color: var(--color-2);
+    }
+}
+
+.btn-secondary {
+    background-color: var(--color-1);
+    border: none;
+    // border: var(--color-3) solid 20px;
+}
+
+.dropdown-menu {
+    background-color: var(--color-1);
+
+}
+
+.dropdown-item {
+    color: var(--color-2);
+
+    &:hover {
+        color: var(--color-3);
+    }
+}
