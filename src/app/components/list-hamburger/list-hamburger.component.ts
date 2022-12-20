@@ -13,12 +13,14 @@ export class ListHamburgerComponent implements OnInit {
   constructor(private firestore: Firestore) { }
 
   ngOnInit(): void {
-    this.getHamburgers().subscribe(arg => console.log(arg));
+    this.getHamburgers();
   }
 
-  getHamburgers(): Observable<hamburger[]> {
+  getHamburgers() {
     const hamburgerRef = collection(this.firestore, 'hamburger');
-    return collectionData(hamburgerRef, { idField: 'id' }) as Observable<hamburger[]>
+    const res = collectionData(hamburgerRef, { idField: 'id' }) 
+    res.pipe().forEach(a => console.log(a));
+    
   }
 
 }
