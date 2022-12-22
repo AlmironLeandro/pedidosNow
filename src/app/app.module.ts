@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
+// import { StoreModule } from '@ngrx/store';
+import { AgGridModule } from 'ag-grid-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -8,7 +9,9 @@ import { ListHamburgerComponent } from './components/list-hamburger/list-hamburg
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
+// import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 
 
 
@@ -18,6 +21,7 @@ import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
     AppComponent,
     NavbarComponent,
     ListHamburgerComponent,
+    ShoppingCartComponent,
 
   ],
   imports: [
@@ -25,7 +29,8 @@ import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    StoreModule.forRoot({ hamburger: hamburgerReducer })
+    // StoreModule.forRoot({ hamburger: hamburgerReducer }),
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

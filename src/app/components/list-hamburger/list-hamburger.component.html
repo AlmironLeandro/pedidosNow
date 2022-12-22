@@ -1,3 +1,4 @@
+
 <div class="box flex-wrap d-flex ">
     <div class="box-item  animate__animated animate__backInLeft " *ngFor="let item of hamburgers let i = index;">
      
@@ -6,16 +7,15 @@
                 <i class="uil uil-plus"></i>
             </div>
             <div class="item">
-
                 <p>{{item.nombre}}</p>
             </div>
             <div class="item">
-                <p>{{'Costo: '+item.valor}}</p>
+                <p>{{'Precio: $'+item.valor}}</p>
             </div>
         </div>
         <img class="img-hamburger" [src]=item.ulrImg alt="hamburger">
         <div class="buttom text-center">
-            <button type="button" class="btn btn-light">Agregar</button>
+            <button type="button" class="btn btn-light" (click)="addOrder(item)">Agregar</button>
         </div>
     </div>
 </div>

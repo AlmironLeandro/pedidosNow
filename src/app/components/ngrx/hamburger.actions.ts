@@ -1,4 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import hamburger from 'src/app/interfaces/hamburger.interface';
+// // import { createAction, props } from '@ngrx/store';
+// import hamburger from 'src/app/interfaces/hamburger.interface';
 
-export const getHamburgers = createAction('getHamburgers');
+// export const getHamburgers = createAction('getHamburgers',
+//     props<{ h: hamburger }>());

@@ -1,0 +1,20 @@
+.icon-shopping {
+    margin: 10px;
+    position: fixed;
+    right: 8%;
+    z-index: 1000000;
+    // background-color: var(--color-5);
+    background-color: var(--color-1);
+    color: var(--color-2);
+    border-radius: 10px;
+}
+
+.modal {
+    position: fixed;
+    top: 25vh;
+}
+
+.badge {
+    font-size: 10px;
+    border: 2px solid var(--color-2);
+}
