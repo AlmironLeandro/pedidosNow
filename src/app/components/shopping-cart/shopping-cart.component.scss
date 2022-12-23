@@ -1,3 +1,5 @@
+
+$small:400px;
 .icon-shopping {
     margin-right: 3rem;
     position: fixed;
@@ -8,6 +10,11 @@
     background-color: var(--color-1);
     color: var(--color-2);
     border-radius: 10px;
+    border: 3px solid black;
+
+    @media screen and (max-width:$small) {
+        margin-right: 1rem;
+    }
 }
 
 .modal {

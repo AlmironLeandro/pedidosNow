@@ -21,6 +21,13 @@ export class HamburgerService {
     this.sharingObservablePrivate$.next(updatevalue)
   }
 
+  removeHamburger(idData: string) {
+    const currentItems = this.sharingObservablePrivate$.getValue();
+    const itemsWithoutDeleted = currentItems.filter(({ id }) => id !== idData);
+    console.log(itemsWithoutDeleted);
+    this.sharingObservablePrivate$.next(itemsWithoutDeleted);
+  }
+
   addFinishedOrder(order: order) {
     const orderRef = collection(this.firestore, 'order');
     return addDoc(orderRef, order)

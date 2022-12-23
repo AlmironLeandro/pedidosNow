@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-renderer/btn-cell-renderer.component';
 
 
 
@@ -22,6 +23,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     NavbarComponent,
     ListHamburgerComponent,
     ShoppingCartComponent,
+    BtnCellRendererComponent,
 
   ],
   imports: [
