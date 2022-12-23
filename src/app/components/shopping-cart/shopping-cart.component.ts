@@ -19,8 +19,8 @@ export class ShoppingCartComponent implements OnInit {
   total!: number
 
   columnDefs: ColDef[] = [
-    { field: 'nombre' },
-    { field: 'valor' },
+    { field: 'nombre',  flex:2,minWidth: 120,maxWidth: 150},
+    { field: 'valor', flex:2,minWidth: 120,maxWidth: 200},
     {
       field: 'id',
       cellRenderer: BtnCellRendererComponent,
@@ -28,7 +28,7 @@ export class ShoppingCartComponent implements OnInit {
         clicked: function (field: any) {
         },
       },
-      maxWidth: 2
+      
     }
   ];
 
