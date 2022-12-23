@@ -5,7 +5,10 @@
       <i class="uil uil-restaurant"></i>
 
     </span>
-    <div class="dropdown">
+    <div class="register" *ngIf="login">
+      <button type="button" class="btn btn-danger ">Registrarse</button>
+    </div>
+    <div class="dropdown" *ngIf="!login">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Leandro | Almiron
       </button>

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-hamburger.component.scss']
 })
 export class ListHamburgerComponent implements OnInit {
-
+  login:boolean = false
   hamburgers!: hamburger[]
 
   constructor(private serviceHamburger: HamburgerService) {

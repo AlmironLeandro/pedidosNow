@@ -12,6 +12,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-renderer/btn-cell-renderer.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 
@@ -24,6 +27,8 @@ import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-re
     ListHamburgerComponent,
     ShoppingCartComponent,
     BtnCellRendererComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
@@ -32,7 +37,8 @@ import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-re
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     // StoreModule.forRoot({ hamburger: hamburgerReducer }),
-    AgGridModule
+    AgGridModule,
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

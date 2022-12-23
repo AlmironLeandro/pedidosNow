@@ -10,11 +10,13 @@
     --color-2: #F1FAEE;
     --color-3: #6B0504;
     --color-4: #626868;
-    --color-5: #230007;
+    --color-5: #230007d8;
 }
 
 body {
     font-family: 'IBM', 'Cabin';
     height: 100%;
     width: 100%;
+    background-color: grey;
+    // background-color: red;
 }

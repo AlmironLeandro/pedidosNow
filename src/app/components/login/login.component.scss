@@ -1,0 +1,42 @@
+$small: 500px;
+
+
+
+.firstTxt {
+    font-family: 'Dancing Script';
+    font-size: 100px;
+}
+
+.secondTxt {
+    color: var(--color-3);
+}
+
+.text-absolute {
+    position: absolute;
+    color: var(--color-2);
+    z-index: 10000;
+    width: 100%;
+    top: 25%;
+    
+
+}
+
+img {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    height: calc(100vh - 54px);
+}
+
+
+@media screen and (max-width:$small) {
+
+    .firstTxt {
+        font-size: 40px;
+    }
+
+    .secondTxt {
+        border: 1px solid var(--color-1);
+        padding: 20px;
+        font-size: 30px;
+    }
+
+}
