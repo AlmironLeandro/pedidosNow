@@ -23,9 +23,16 @@ export class ShoppingCartComponent implements OnInit {
   columnDefs: ColDef[] = [
     { field: 'nombre' },
     { field: 'valor' },
+    
     // { field: 'Total' }
   ];
-
+  headerComponentParams = { template: `
+  <div>
+      <span>
+        sample <i class="fa fa-star"> 
+               </i>
+       </span>
+  </div>`}
 
 
 

@@ -1,9 +1,10 @@
 .icon-shopping {
-    margin: 10px;
+    margin-right: 3rem;
     position: fixed;
-    right: 8%;
+    bottom: 10%;
+    right: 0;
+    padding: 0;
     z-index: 1000000;
-    // background-color: var(--color-5);
     background-color: var(--color-1);
     color: var(--color-2);
     border-radius: 10px;
@@ -19,7 +20,6 @@
     border: 2px solid var(--color-2);
 }
 
-.modal-footer
-{
+.modal-footer {
     justify-content: space-between;
 }

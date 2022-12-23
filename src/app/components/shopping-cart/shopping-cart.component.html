@@ -18,7 +18,7 @@
             </div>
             <div class="modal-body">
                 <ag-grid-angular *ngIf="(data$ | async)!.length > 0" style="width: 100%; height:200px"
-                    class="ag-theme-alpine" [rowData]="data$ | async" [columnDefs]="columnDefs">
+                    class="ag-theme-alpine" [rowData]="data$ | async" headerComponentParams [columnDefs]="columnDefs">
                 </ag-grid-angular>
                 <div class="text-center">
                     <h1 *ngIf="(data$ | async)!.length == 0">Tu carrito esta vacio!</h1>

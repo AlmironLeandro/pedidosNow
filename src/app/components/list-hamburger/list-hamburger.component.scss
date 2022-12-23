@@ -1,17 +1,19 @@
+$small: 400px;
+$medium: 900px;
+
 .box {
+
     // background-color: var(--color-3);
-    justify-content: center;
-
-
     .box-item {
         padding: 1rem;
         background-color: var(--color-1);
         margin: 1rem;
         justify-content: center;
         align-items: center;
-        border-radius: 50%;
+        border-radius: 20%;
 
-        img {
+
+        .img-hamburger {
             border-radius: 50%;
             border: 1px solid var(--color-2);
             width: 50vh;
@@ -22,6 +24,7 @@
         .buttom {
             margin-top: 1rem;
         }
+
 
     }
 
@@ -50,15 +53,30 @@
         }
     }
 
-    .icon-plus
-    {
+    .icon-plus {
         position: absolute;
         top: 12%;
         right: 14%;
         display: flex;
         font-size: 30px;
-        color:var(--color-2);
+        color: var(--color-2);
     }
 
 
+
+    @media screen and (max-width: $small) {
+        .box-item {
+            border-radius: 50%;
+
+            .img-hamburger {
+                width: 40vh;
+                height: 40vh;
+            }
+        }
+        .item-atributes {
+            width: 40vh;
+            height: 40vh;
+        }
+
+    }
 }
