@@ -13,10 +13,11 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-renderer/btn-cell-renderer.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,17 +29,20 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     ShoppingCartComponent,
     BtnCellRendererComponent,
     LoginComponent,
-    RegisterComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     // StoreModule.forRoot({ hamburger: hamburgerReducer }),
     AgGridModule,
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
