@@ -26,15 +26,11 @@ export class SingInComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required, Validators.minLength(6)])
-  rePassword = new FormControl('', [Validators.required, Validators.minLength(6)])
 
   ngOnInit(): void {
 
   }
 
-  passwordMatch() {
-    return this.password.value != this.rePassword.value
-  }
 
   isGreater() {
     return this.password.value!.length < 6
@@ -43,24 +39,13 @@ export class SingInComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.passwordMatch()) {
-      this.userService.message('Las contraseñas tienen que coincidir')
-    }
-    else {
-      this.userService.register({ email: this.email, password: this.password })
-        .then(res => {
-          this.dialogRef.close()
-          this.userService.message('Usuario creado')
-
-        })
-
-        .catch(error => {
-          this.userService.message(error + ' Posiblemente el correo que ingreso no exista'); console.log(error)
-        });
-
-    }
-
-
+    this.userService.login(this.email.value, this.password.value)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error)
+        this.userService.message('La contraseña y/o el usuario son incorrectos')
+      });
   }
-
 }

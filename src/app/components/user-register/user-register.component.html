@@ -33,7 +33,7 @@
                 <input type="password" matInput [formControl]="rePassword" [errorStateMatcher]="matcher"
                     placeholder="Contraseña">
                 <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
-                <mat-error *ngIf="passwordMatch() && !rePassword.hasError('required')">
+                <mat-error *ngIf="!passwordMatch() && !rePassword.hasError('required')">
                     La contraseña debe coincidir
                 </mat-error>
                 <mat-error *ngIf="rePassword.hasError('required')">
@@ -48,6 +48,6 @@
     <div><button mat-button mat-dialog-close>Cancelar</button></div>
     <div>
         <button type="submit" class="btn btn-primary" (click)="onSubmit()"
-            [disabled]="!(email.valid && password.valid && rePassword.valid)">Crear cuenta</button>
+            [disabled]="!(email.valid && password.valid && rePassword.valid && passwordMatch() )">Crear cuenta</button>
     </div>
 </mat-dialog-actions>

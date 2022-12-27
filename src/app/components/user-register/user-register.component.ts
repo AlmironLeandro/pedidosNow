@@ -32,8 +32,10 @@ export class UserRegisterComponent implements OnInit {
 
   }
 
+
+
   passwordMatch() {
-    return this.password.value != this.rePassword.value
+    return this.password.value === this.rePassword.value
   }
 
   isGreater() {
@@ -43,11 +45,11 @@ export class UserRegisterComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.passwordMatch()) {
+    if (!this.passwordMatch()) {
       this.userService.message('Las contraseñas tienen que coincidir')
     }
     else {
-      this.userService.register({ email: this.email, password: this.password })
+      this.userService.register(this.email.value, this.password.value)
         .then(res => {
           this.dialogRef.close()
           this.userService.message('Usuario creado')
