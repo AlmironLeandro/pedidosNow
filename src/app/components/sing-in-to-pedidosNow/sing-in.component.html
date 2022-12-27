@@ -1,0 +1,47 @@
+<div mat-dialog-title >
+    <div  mat-button mat-dialog-close class="uil uil-times text-end buttonCancel" ></div>
+    <div class="text-center">Iniciar sesión</div>
+</div>
+<mat-dialog-content class="mat-typography">
+    <ng-container>
+        <form class="example-form text-center">
+            <mat-form-field>
+                <mat-label>Correo electronico:</mat-label>
+                <input type="email" matInput [formControl]="email" [errorStateMatcher]="matcher"
+                    placeholder="Ejem. pat@example.com">
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                    Introducir un email valido.
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                    Complete el campo requerido.
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field>
+                <mat-label>Contraseña:</mat-label>
+                <input type="password" matInput [formControl]="password" [errorStateMatcher]="matcher"
+                    placeholder="Contraseña">
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="isGreater() && !password.hasError('required')">
+                    Se solicita una contraseña de al menos 6 caracteres.
+                </mat-error>
+                <mat-error *ngIf="password.hasError('required')">
+                    La contraseña es requerida.
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+    </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="justify-content-center">
+    <!-- <div>
+        <button mat-button mat-dialog-close>Cancelar</button>
+    </div> -->
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()"
+            [disabled]="!(email.valid && password.valid && rePassword.valid)">Ingresar</button>
+    </div>
+</mat-dialog-actions>

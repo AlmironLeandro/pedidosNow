@@ -6,7 +6,8 @@
 
     </span>
     <div class="register" *ngIf="login">
-      <button type="button" class="btn btn-danger " (click)="openDialog()">Registrarse</button>
+      <button type="button" class="btn btn-danger " (click)="openDialogRegister()">Registrarse</button>
+      <button type="button" class="btn btn-danger " (click)="openDialogSingIn()">Iniciar sesión</button>
     </div>
     <div class="dropdown" *ngIf="!login">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

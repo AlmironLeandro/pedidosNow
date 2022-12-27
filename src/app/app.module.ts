@@ -22,11 +22,11 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListHamburgerComponent } from './components/list-hamburger/list-hamburger.component';
-
+import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { SingInComponent } from './components/sing-in-to-pedidosNow/sing-in.component'
 
 //Import from Material ui Angular
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -42,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BtnCellRendererComponent,
     LoginComponent,
     UserRegisterComponent,
+    SingInComponent
 
 
 
