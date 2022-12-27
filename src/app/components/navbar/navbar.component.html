@@ -6,8 +6,7 @@
 
     </span>
     <div class="register" *ngIf="login">
-      <button type="button" class="btn btn-danger " data-bs-toggle="modal"
-        data-bs-target="#exampleModal">Registrarse</button>
+      <button type="button" class="btn btn-danger " (click)="openDialog()">Registrarse</button>
     </div>
     <div class="dropdown" *ngIf="!login">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,56 +21,13 @@
   </div>
 </nav>
 
+<!-- Modal user register material ui -->
 
 
 <!-- Modal User Register-->
-<form [formGroup]="formReg" >
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    style="z-index: 10000;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Registrate</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- gmail -->
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Correo electronico:</span>
-            </div>
-            <input [class.is-invalid]="formReg.get('email')?.touched && formReg.get('email')?.invalid" type="text" class="form-control" formControlName="email">
-          </div>
-
-          <!-- password -->
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Contraseña:</span>
-            </div>
-            <input [class.is-invalid]="formReg.get('password')?.touched && formReg.get('password')?.invalid"
-             type="password" class="form-control" formControlName="password">
-          </div>
-          <!-- Re password -->
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Confirmacion:</span>
-            </div>
-            <input [class.is-invalid]="formReg.get('rePassword')?.touched && formReg.get('rePassword')?.invalid"
-             type="password" class="form-control" formControlName="rePassword">
-            </div>
-            <small *ngIf="passwordMatch()" class="text-danger m-4">Deben concidir ambas contraseñas</small>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button> -->
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!formReg.valid || passwordMatch() ">Crear cuenta</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
 
 
-<div class="alert alert-success" role="alert">
-  This is a success alert—check it out!
-</div>
+<!-- <div *ngIf="accountSuccesses" class="alert alert-success animate__animated animate__zoomIn" role="alert"
+  style="position: fixed; bottom: 0; right: 0; z-index: 100000;">
+  Su cuenta se ha creado con exito!
+</div> -->
