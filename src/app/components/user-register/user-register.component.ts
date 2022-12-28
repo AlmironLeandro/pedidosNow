@@ -52,6 +52,8 @@ export class UserRegisterComponent implements OnInit {
       this.userService.register(this.email.value, this.password.value)
         .then(res => {
           this.dialogRef.close()
+          console.log(res);
+          
           this.userService.message('Usuario creado')
 
         })

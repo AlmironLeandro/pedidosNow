@@ -35,7 +35,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(public hamburgerService: HamburgerService) {
     this.data$ = hamburgerService.orderCurrent
     this.data$.subscribe((h, l = 0) => h.map((data) => {
-      l += data.valor;
+      l += data.price;
       this.total = l;
     },
     ))

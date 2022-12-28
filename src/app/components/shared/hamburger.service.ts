@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { collection, Firestore, addDoc, collectionData } from '@angular/fire/firestore';
 import hamburger from 'src/app/interfaces/hamburger.interface';
 import { Observable, BehaviorSubject } from 'rxjs'
-import order from 'src/app/interfaces/order.interface';
+// import {user} from 'src/app/interfaces/order.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,14 +33,13 @@ export class HamburgerService {
         return
       }
     });
-    console.log(itemsWithoutDeleted);
     this.sharingObservablePrivate$.next(itemsWithoutDeleted);
   }
 
-  addFinishedOrder(order: order) {
-    const orderRef = collection(this.firestore, 'order');
-    return addDoc(orderRef, order)
-  }
+  // addFinishedOrder(order: order) {
+  //   const orderRef = collection(this.firestore, 'order');
+  //   return addDoc(orderRef, order)
+  // }
 
   get getHamburgers(): Observable<hamburger[]> {
     const hamburgerRef = collection(this.firestore, 'hamburger');

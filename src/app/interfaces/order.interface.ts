@@ -1,7 +1,12 @@
 import hamburger from "./hamburger.interface";
 
-export default interface order {
+export  interface carts {
     id?: string;
-    order: hamburger[];
-    total:number;
+    status: 'pending' | 'completed'
+}
+
+export  interface product_carts {
+    product_id: string;
+    cart_id: carts;
+    quantity: hamburger[];
 }
