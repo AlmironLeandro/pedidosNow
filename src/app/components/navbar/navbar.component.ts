@@ -4,6 +4,8 @@ import { UserRegisterComponent } from '../user-register/user-register.component'
 import { MatDialog } from '@angular/material/dialog';
 import { SingInComponent } from '../sing-in-to-pedidosNow/sing-in.component';
 import { Router } from '@angular/router';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 
 @Component({
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   @Input() login?: boolean;
-
+  public user: any
 
 
   constructor(public dialog: MatDialog, private userService: UserService, private router: Router) { }
@@ -33,14 +35,28 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    try {
+      const auth = getAuth();
+      this.user = auth.currentUser;
+    } catch (error) {
 
+
+    }
   }
 
 
   logout() {
-    this.userService.loguot()
-    this.userService.message('se ha cerrado la sesión correctamente')
-    this.router.navigate([`/login`])
+    this.userService.loguot().then(
+      res => {
+        this.userService.message('se ha cerrado la sesión correctamente')
+        this.router.navigate([`/login`])
+      }
+
+    ).catch(error => {
+      alert(error)
+    })
+
   }
+
 
 }
