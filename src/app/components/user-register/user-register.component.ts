@@ -3,6 +3,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../shared/user.service';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import client from 'src/app/interfaces/user.interface';
+
+
+
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,7 +27,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class UserRegisterComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   accountSuccesses = false
-  constructor(public dialogRef: MatDialogRef<UserRegisterComponent>, private userService: UserService) { }
+  constructor(public dialogRef: MatDialogRef<UserRegisterComponent>, private userService: UserService, private firestore: Firestore) { }
 
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -33,6 +38,11 @@ export class UserRegisterComponent implements OnInit {
   }
 
 
+  createUserOnCollection(client: client) {
+    const clientRef = collection(this.firestore, 'usuarios');
+
+    return addDoc(clientRef, client)
+  }
 
   passwordMatch() {
     return this.password.value === this.rePassword.value
@@ -52,9 +62,11 @@ export class UserRegisterComponent implements OnInit {
       this.userService.register(this.email.value, this.password.value)
         .then(res => {
           this.dialogRef.close()
-          console.log(res);
-          
-          this.userService.message('Usuario creado')
+          const client: client = {
+            userId: res.user.uid,
+          }
+          this.createUserOnCollection(client)
+          this.userService.message('Usuario registrado')
 
         })
 
