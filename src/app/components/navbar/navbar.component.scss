@@ -4,6 +4,12 @@
     .navbar-brand {
         color: var(--color-2);
     }
+
+    .dropdown-item {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 
 .btn-secondary {
@@ -28,27 +34,27 @@
 .register {
     margin-right: 20%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
     button {
 
         background-color: var(--color-1);
         color: var(--color-2);
-        &:hover
-        {
+
+        &:hover {
             background-color: var(--color-5);
         }
     }
 }
 
-.input-group
-{
+.input-group {
     padding: 20px;
 }
 
 .example-card {
     max-width: 400px;
-  }
-  
-  .example-header-image {
+}
+
+.example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
-  }
+}

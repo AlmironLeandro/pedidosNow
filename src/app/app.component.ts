@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { collection, Firestore, addDoc } from '@angular/fire/firestore';
+import { Auth } from '@angular/fire/auth';
+// import { collection, Firestore, addDoc } from '@angular/fire/firestore';
 import hamburger from './interfaces/hamburger.interface';
 
 @Component({
@@ -11,12 +12,15 @@ export class AppComponent implements OnInit {
   title = 'pedidosNow';
 
 
-  constructor(private firestore: Firestore) { }
+  constructor(private auth: Auth) {
+  }
   ngOnInit(): void {
     // this.addHamburgers(this.arrayHamburgers)
 
   }
+
 }
+
 
   // arrayHamburgers: hamburger[] = [
 
@@ -84,7 +88,7 @@ export class AppComponent implements OnInit {
   //     return addDoc(hamburger, element)
 
   //   });}}
-   
 
-  
+
+
 

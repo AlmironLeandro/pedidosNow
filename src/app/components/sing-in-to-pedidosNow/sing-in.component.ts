@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../shared/user.service';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -21,14 +22,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class SingInComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
-  accountSuccesses = false
-  constructor(public dialogRef: MatDialogRef<SingInComponent>, private userService: UserService) { }
+  constructor(public dialogRef: MatDialogRef<SingInComponent>, private userService: UserService, private router: Router) { }
 
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required, Validators.minLength(6)])
 
   ngOnInit(): void {
-
   }
 
 
@@ -36,16 +35,17 @@ export class SingInComponent implements OnInit {
     return this.password.value!.length < 6
   }
 
-
-
   onSubmit() {
     this.userService.login(this.email.value, this.password.value)
       .then(res => {
         console.log(res);
+        this.userService.message('Inicio de sesíon correctamente')
+        this.dialogRef.close()
+        this.router.navigate([`/main`])
       })
       .catch(error => {
         console.log(error)
-        this.userService.message('La contraseña y/o el usuario son incorrectos')
+        this.userService.message('La contraseña y/o el correo son incorrectos')
       });
   }
 }
