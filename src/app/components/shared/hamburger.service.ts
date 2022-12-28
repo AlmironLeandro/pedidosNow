@@ -22,8 +22,17 @@ export class HamburgerService {
   }
 
   removeHamburger(idData: string) {
+    //I needed code fast, this logic doesn't work in the real world
     const currentItems = this.sharingObservablePrivate$.getValue();
-    const itemsWithoutDeleted = currentItems.filter(({ id }) => id !== idData);
+    const itemsWithoutDeleted = currentItems.filter((ha) => {
+      if (ha.id !== idData) {
+        return ha
+      }
+      else {
+        idData = ''
+        return
+      }
+    });
     console.log(itemsWithoutDeleted);
     this.sharingObservablePrivate$.next(itemsWithoutDeleted);
   }
