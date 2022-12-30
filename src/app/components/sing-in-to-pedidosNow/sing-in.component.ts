@@ -38,9 +38,12 @@ export class SingInComponent implements OnInit {
   onSubmit() {
     this.userService.login(this.email.value, this.password.value)
       .then(res => {
-        console.log(res);
+        // const userId = res.user.uid
+        // this.userService.loadClient(userId)
         this.userService.message('Inicio de sesíon correctamente')
         this.dialogRef.close()
+        // console.log(this.userService.client);
+
         this.router.navigate([`/main`])
       })
       .catch(error => {

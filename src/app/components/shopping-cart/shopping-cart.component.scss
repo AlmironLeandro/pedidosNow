@@ -1,5 +1,5 @@
+$small: 400px;
 
-$small:400px;
 .icon-shopping {
     margin-right: 3rem;
     position: fixed;
@@ -29,4 +29,9 @@ $small:400px;
 
 .modal-footer {
     justify-content: space-between;
+}
+
+.buttonRealizarPedido {
+    background-color: var(--color-1);
+    color: var(--color-2);
 }

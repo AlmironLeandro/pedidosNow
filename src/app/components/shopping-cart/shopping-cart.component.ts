@@ -6,6 +6,7 @@ import { HamburgerService } from '../shared/hamburger.service';
 import { Observable, } from 'rxjs'
 import { AgGridAngular } from 'ag-grid-angular';
 import { BtnCellRendererComponent } from './btn-cell-renderer/btn-cell-renderer.component';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -19,8 +20,8 @@ export class ShoppingCartComponent implements OnInit {
   total!: number
 
   columnDefs: ColDef[] = [
-    { field: 'nombre',  flex:2,minWidth: 120,maxWidth: 150},
-    { field: 'valor', flex:2,minWidth: 120,maxWidth: 200},
+    { field: 'name', flex: 2, minWidth: 120, maxWidth: 150 },
+    { field: 'price', flex: 2, minWidth: 120, maxWidth: 200 },
     {
       field: 'id',
       cellRenderer: BtnCellRendererComponent,
@@ -28,22 +29,38 @@ export class ShoppingCartComponent implements OnInit {
         clicked: function (field: any) {
         },
       },
-      
+
     }
   ];
 
-  constructor(public hamburgerService: HamburgerService) {
+  constructor(private hamburgerService: HamburgerService, private userService: UserService) {
     this.data$ = hamburgerService.orderCurrent
     this.data$.subscribe((h, l = 0) => h.map((data) => {
       l += data.price;
       this.total = l;
     },
+      this.data$.subscribe((h) => this.hamburgers = h)
     ))
 
   }
 
   ngOnInit(): void {
+  }
 
+  addOrder() {
+    this.hamburgerService.createOrder(this.hamburgers)
+      .then((res) => {
+
+        this.userService.message('Su pedido se ha realizado con exito!')
+        console.log(res)
+        this.hamburgerService.cleanCart()
+        alert('Puede ver el estado de su pedido haciendo click en su usuario')
+
+
+      }
+      )
+      .catch(error => console.log(error)
+      )
 
 
   }

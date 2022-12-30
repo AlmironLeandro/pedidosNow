@@ -65,7 +65,7 @@ export class UserRegisterComponent implements OnInit {
           const client: client = {
             userId: res.user.uid,
           }
-          this.createUserOnCollection(client)
+          this.userService.createCollection('usuarios', client)
           this.userService.message('Usuario registrado')
 
         })

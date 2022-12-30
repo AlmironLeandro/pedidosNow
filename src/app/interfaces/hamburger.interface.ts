@@ -3,7 +3,6 @@ export default interface hamburger {
     name: string;
     price: number;
     description: string;
-    //Campo agregado
     ulrImg: string;
 
 }

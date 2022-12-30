@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListHamburgerComponent } from './components/list-hamburger/list-hamburger.component';
 import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { CanActiveGuard } from './can-active.guard';
+
 
 const routes: Routes = [
   {

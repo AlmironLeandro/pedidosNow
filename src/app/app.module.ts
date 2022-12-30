@@ -10,6 +10,9 @@ import { AgGridModule } from 'ag-grid-angular';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire/compat'
+
+
 
 //Arquitecture components
 // import { StoreModule } from '@ngrx/store';
@@ -55,6 +58,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase), 
     // StoreModule.forRoot({ hamburger: hamburgerReducer }),
     AgGridModule,
     provideAuth(() => getAuth()),

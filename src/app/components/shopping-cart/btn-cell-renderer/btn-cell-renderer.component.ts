@@ -18,7 +18,7 @@ export class BtnCellRendererComponent implements ICellRendererAngularComp {
   }
 
   btnClickedHandler(event: any) {
-    console.log(this.params.value);
+    // console.log(this.params.value);
     
     this.serviceHamburger.removeHamburger(this.params.value)
   }

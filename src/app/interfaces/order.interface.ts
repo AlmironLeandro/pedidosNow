@@ -1,12 +1,17 @@
 import hamburger from "./hamburger.interface";
-
-export  interface carts {
+export enum Status {
+    pending = 'pending',
+    completed = 'completed',
+}
+export interface carts {
     id?: string;
-    status: 'pending' | 'completed'
+    status: string
 }
 
-export  interface product_carts {
-    product_id: string;
-    cart_id: carts;
-    quantity: hamburger[];
+export default class productCarts implements carts {
+    id?: string;
+    status: string = 'pending'
+    product_id?: string;
+    cart_id?: carts;
+    quantity?: any;
 }

@@ -26,7 +26,8 @@
             </div>
             <div class="modal-footer">
                 <div class="text-center" *ngIf="(data$ | async)!.length > 0 ">Total: {{total}}</div>
-                <div></div>
+                <button *ngIf="(data$ | async)!.length > 0 " type="button" class="btn buttonRealizarPedido"
+                    (click)="addOrder()" data-bs-dismiss="modal">Realizar pedido</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
