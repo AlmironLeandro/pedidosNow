@@ -27,9 +27,6 @@ export class UserService {
 
   }
 
- 
-
-
   async createCollection(collection: any, data: any) {
     return await this.fire.collection(collection).add(data)
   }

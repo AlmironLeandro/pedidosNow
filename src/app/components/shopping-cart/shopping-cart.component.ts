@@ -50,19 +50,13 @@ export class ShoppingCartComponent implements OnInit {
   addOrder() {
     this.hamburgerService.createOrder(this.hamburgers)
       .then((res) => {
-
         this.userService.message('Su pedido se ha realizado con exito!')
-        console.log(res)
         this.hamburgerService.cleanCart()
         alert('Puede ver el estado de su pedido haciendo click en su usuario')
-
-
       }
       )
       .catch(error => console.log(error)
       )
-
-
   }
 
 }

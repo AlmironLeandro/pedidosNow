@@ -15,7 +15,7 @@ export class ListHamburgerComponent implements OnInit {
   hamburgers!: hamburger[]
 
   constructor(private serviceHamburger: HamburgerService) {
-    // this.hamburger$ = store.select('hamburger');
+
   }
 
   ngOnInit(): void {
@@ -25,7 +25,6 @@ export class ListHamburgerComponent implements OnInit {
   }
 
   addOrder(h: hamburger) {
-    // this.store.dispatch(action.getHamburgers({ h }));
     this.serviceHamburger.addHamburger = h
   }
 

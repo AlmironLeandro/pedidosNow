@@ -14,8 +14,8 @@
         {{user.email}}
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Perfil</a></li>
-        <li><a class="dropdown-item" href="#">Pedidos</a></li>
+        <li><a class="dropdown-item" routerLink="/orders">Pedidos</a></li>
+        <li><a class="dropdown-item" routerLink="/main">Hacer pedido</a></li>
         <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
       </ul>
     </div>

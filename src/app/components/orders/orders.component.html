@@ -1,0 +1,36 @@
+<app-navbar [login]="login" class="col-12"></app-navbar>
+
+<div class="d-flex justify-content-center">
+  <h1 class="notOrders " *ngIf="orders.length === 0">¡No hay historico de pedidos!</h1>
+</div>
+<div class="col-12 d-flex justify-content-center">
+  <div class="col-12 col-lg-6">
+
+    <mat-card class="order" *ngFor="let order of orders let i = index;">
+      <mat-card-content>
+        <div class="col-12 d-flex justify-content-between">
+          <h1>Pedido#{{i+1}}</h1>
+          <div class="d-flex">
+            <mat-chip-set class="example-chip" style="color: var(--color-2) !important;" cdkDropList
+              cdkDropListOrientation="horizontal">
+              <mat-chip class="example-box" style="background-color: var(--color-1); color: var(--color-2) !important;"
+                cdkDrag>
+                Estado: {{order.status }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex col-12" style="margin-top: 10%;" *ngFor="let hamburger of order.quantity">
+          <div class="d-flex justify-content-between col-11">
+            <h1>{{hamburger.name}}</h1>
+            <h1>{{hamburger.price}}</h1>
+          </div>
+          <div style="width: 50px; height: 50px;">
+            <img [src]="hamburger.ulrImg" alt="hamburger">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { UserRegisterComponent } from '../user-register/user-register.component'
 import { MatDialog } from '@angular/material/dialog';
 import { SingInComponent } from '../sing-in-to-pedidosNow/sing-in.component';
 import { Router } from '@angular/router';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 
 
@@ -18,7 +18,15 @@ export class NavbarComponent implements OnInit {
   public user: any
 
 
-  constructor(public dialog: MatDialog, private userService: UserService, private router: Router) { }
+  constructor(public dialog: MatDialog, private userService: UserService, private router: Router) {
+    try {
+      const auth = getAuth();
+      this.user = auth.currentUser;
+    } catch (error) {
+
+
+    }
+  }
 
   openDialogRegister() {
     const dialogRef = this.dialog.open(UserRegisterComponent, {
@@ -35,13 +43,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    try {
-      const auth = getAuth();
-      this.user = auth.currentUser;
-    } catch (error) {
-
-
-    }
+   
   }
 
 

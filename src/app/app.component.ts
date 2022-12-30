@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-// import { addDoc, collection, Firestore } from '@angular/fire/firestore';
-// import { collection, Firestore, addDoc } from '@angular/fire/firestore';
-
-import { collection } from '@angular/fire/firestore';
+import { addDoc } from '@angular/fire/firestore';
+import { collection, Firestore } from '@angular/fire/firestore';
 import hamburger from './interfaces/hamburger.interface';
 
 @Component({
@@ -15,25 +12,17 @@ export class AppComponent implements OnInit {
   title = 'pedidosNow';
 
 
-  constructor(private auth: Auth ) {
+  constructor(private firestore: Firestore) {
   }
   ngOnInit(): void {
-    // this.addHamburgers(this.arrayHamburgers)
-
-    
 
   }
-
-  
-
-  // addHamburgers(h: hamburger[]) {
-  //   const hamburger = collection(this.firestore, 'hamburger');
-  //   h.forEach(element => {
-  //     return addDoc(hamburger, element)
-
-  //   });
-  // }
-
+  addHamburgers(h: hamburger[]) {
+    const hamburger = collection(this.firestore, 'hamburger');
+    h.forEach(element => {
+      return addDoc(hamburger, element)
+    });
+  }
 
   arrayHamburgers: hamburger[] = [
 

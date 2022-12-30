@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, Firestore, collectionData } from '@angular/fire/firestore';
+import { collection, Firestore, collectionData, FieldPath, FieldValue } from '@angular/fire/firestore';
 import hamburger from 'src/app/interfaces/hamburger.interface';
 import { getAuth } from "firebase/auth";
 import { Observable, BehaviorSubject } from 'rxjs'
@@ -18,70 +18,45 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class HamburgerService {
   private sharingObservablePrivate$: BehaviorSubject<Array<hamburger>> = new BehaviorSubject<Array<hamburger>>([])
-  private users!: client[]
+  public users!: client[]
   constructor(private firestore: Firestore, private auth: Auth, private fire: AngularFirestore) {
+    this.setUserCurrent()
+  }
 
+
+  setUserCurrent() {
     this.getUsers()
       .subscribe((u) => {
         this.users = u.filter((current) =>
           current.userId == this.getUid())
       })
-    // setTimeout(() => {
-    //   this.get().subscribe((r) => console.log(r)
-    //   )
-
-    // }, 2000);
-
-
-
-
-
-
   }
 
-  // async createOrder(hamburgers: hamburger[]) {
-  //   const id = 'H5hNgq4BmqGF9Yv8qQKw'
-  //  
-  // }
-
   async createOrder(products: hamburger[]) {
-    console.log(products);
 
     let productCarts: productCarts =
     {
       quantity: products,
 
       status: 'pending',
-      product_id: this.users[0].id
+      product_id: this.getUid()
     }
-    console.log(productCarts);
 
-    // const path = 'usuarios/' + this.users[0].id + '/' + 'carrito/'
     const path = 'carrito/'
-    const id = this.users[0].id as string
-    console.log(id);
-
-    return await this.createDoc(productCarts, path, id)
+    return await this.createDoc(productCarts, path)
   }
 
 
-  createDoc(data: any, path: string, id: string) {
+  createDoc(data: any, path: string) {
     const collection = this.fire.collection(path)
     return collection.add(data)
-    // return collection.doc(id).set(data)
+
   }
-  // const product = doc(this.firestore, 'productCarts');
-  // const path = 'usuarios'+ '/' + 
 
-  // const res = documentSnapshot
-  // return doc(this.firestore, 'usuarios/' + id + '/')
+  async getDoc(path: string, uid?: string) {
+    return this.fire.collection(path).valueChanges()
 
-
-
-  // get() {
-  //   const çlients = collection(this.firestore, `usuarios/${this.users[0].id}`);
-  //   return collectionData(çlients) as Observable<client[]>
-  // }
+  }
 
   getUsers(): Observable<client[]> {
     const clients = collection(this.firestore, 'usuarios');
@@ -105,7 +80,7 @@ export class HamburgerService {
     this.sharingObservablePrivate$.next(updatevalue)
   }
 
-   cleanCart() {
+  cleanCart() {
     let currentValue = this.sharingObservablePrivate$.value
     currentValue = []
     this.sharingObservablePrivate$.next(currentValue)
@@ -125,11 +100,6 @@ export class HamburgerService {
     });
     this.sharingObservablePrivate$.next(itemsWithoutDeleted);
   }
-
-  // addFinishedOrder(order: order) {
-  //   const orderRef = collection(this.firestore, 'order');
-  //   return addDoc(orderRef, order)
-  // }
 
   get getHamburgers(): Observable<hamburger[]> {
     const hamburgerRef = collection(this.firestore, 'hamburger');

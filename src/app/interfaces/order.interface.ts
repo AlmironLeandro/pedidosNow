@@ -13,5 +13,5 @@ export default class productCarts implements carts {
     status: string = 'pending'
     product_id?: string;
     cart_id?: carts;
-    quantity?: any;
+    quantity?: hamburger[];
 }

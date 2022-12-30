@@ -34,7 +34,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { OrdersComponent } from './components/orders/orders.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BtnCellRendererComponent,
     LoginComponent,
     UserRegisterComponent,
-    SingInComponent
+    SingInComponent,
+    OrdersComponent
 
 
 
@@ -65,7 +68,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
