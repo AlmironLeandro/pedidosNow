@@ -5,7 +5,7 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import client from 'src/app/interfaces/user.interface';
-import { FormlyFieldConfig,FormlyFormOptions} from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 
 
@@ -24,13 +24,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./user-register.component.scss']
 })
 
-export class UserRegisterComponent implements OnInit {
+export class UserRegisterComponent  {
   matcher = new MyErrorStateMatcher();
   options: FormlyFormOptions = {};
   form = new FormGroup({});
   public model = { email: '', contraseña: '', confirmacion: '' };
   fields: FormlyFieldConfig[] = [
-    
+
     {
       key: 'email',
       type: 'input',
@@ -68,16 +68,6 @@ export class UserRegisterComponent implements OnInit {
 
   accountSuccesses = false
   constructor(public dialogRef: MatDialogRef<UserRegisterComponent>, private userService: UserService, private firestore: Firestore) { }
-
-  email = new FormControl('', [Validators.required, Validators.email])
-  password = new FormControl('', [Validators.required, Validators.minLength(6)])
-  rePassword = new FormControl('', [Validators.required, Validators.minLength(6)])
-
-  ngOnInit(): void {
-
-  }
-
-
   createUserOnCollection(client: client) {
     const clientRef = collection(this.firestore, 'usuarios');
     return addDoc(clientRef, client)
