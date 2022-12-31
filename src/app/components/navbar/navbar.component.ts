@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.userService.loguot().then(
       res => {
-        this.userService.message('se ha cerrado la sesión correctamente')
+        this.userService.message('Se ha cerrado la sesión correctamente')
         this.router.navigate([`/login`])
       }
 
