@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { AgGridModule } from 'ag-grid-angular';
 
+//Library formly
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+
 //Api-platform firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import {AngularFireModule} from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat'
 
 
 
@@ -35,8 +39,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { OrdersComponent } from './components/orders/orders.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { FormlyHorizontalWrapper } from './components/user-register/horizontal-wrapper';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,8 @@ import {MatChipsModule} from '@angular/material/chips';
     LoginComponent,
     UserRegisterComponent,
     SingInComponent,
-    OrdersComponent
+    OrdersComponent,
+    FormlyHorizontalWrapper
 
 
 
@@ -61,7 +67,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFireModule.initializeApp(environment.firebase),
     // StoreModule.forRoot({ hamburger: hamburgerReducer }),
     AgGridModule,
     provideAuth(() => getAuth()),
@@ -70,7 +76,13 @@ import {MatChipsModule} from '@angular/material/chips';
     MatInputModule,
     MatSnackBarModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot({
+      wrappers: [{ name: 'form-field-horizontal', component: FormlyHorizontalWrapper }],
+      validationMessages: [{ name: 'required', message: 'Este campo es requerido' }],
+    }),
+    FormlyBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

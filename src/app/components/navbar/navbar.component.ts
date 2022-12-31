@@ -30,7 +30,8 @@ export class NavbarComponent implements OnInit {
 
   openDialogRegister() {
     const dialogRef = this.dialog.open(UserRegisterComponent, {
-      width: '500px'
+      width: '500px',
+      
     }
     )
   }

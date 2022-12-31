@@ -5,7 +5,7 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import client from 'src/app/interfaces/user.interface';
-
+import { FormlyFieldConfig,FormlyFormOptions} from '@ngx-formly/core';
 
 
 
@@ -26,6 +26,46 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class UserRegisterComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
+  options: FormlyFormOptions = {};
+  form = new FormGroup({});
+  public model = { email: '', contraseña: '', confirmacion: '' };
+  fields: FormlyFieldConfig[] = [
+    
+    {
+      key: 'email',
+      type: 'input',
+      wrappers: ['form-field-horizontal'],
+      props: {
+        type: 'email',
+        label: 'Email',
+        placeholder: 'Ingresar mail',
+        required: true,
+      },
+    },
+    {
+      key: 'contraseña',
+      type: 'input',
+      wrappers: ['form-field-horizontal'],
+      props: {
+        type: 'password',
+        label: 'Contraseña',
+        placeholder: 'Ingresar contraseña',
+        required: true,
+      }
+    },
+    {
+      key: 'confirmacion',
+      type: 'input',
+      wrappers: ['form-field-horizontal'],
+      props: {
+        type: 'password',
+        label: 'Confirmación de contraseña',
+        placeholder: 'Ingresar la contraseña nuevamente',
+        required: true,
+      }
+    }
+  ]
+
   accountSuccesses = false
   constructor(public dialogRef: MatDialogRef<UserRegisterComponent>, private userService: UserService, private firestore: Firestore) { }
 
@@ -40,16 +80,15 @@ export class UserRegisterComponent implements OnInit {
 
   createUserOnCollection(client: client) {
     const clientRef = collection(this.firestore, 'usuarios');
-
     return addDoc(clientRef, client)
   }
 
   passwordMatch() {
-    return this.password.value === this.rePassword.value
+    return this.model.contraseña === this.model.confirmacion
   }
 
-  isGreater() {
-    return this.password.value!.length < 6
+  isHigher() {
+    return this.model.contraseña.length < 6
   }
 
 
@@ -59,7 +98,7 @@ export class UserRegisterComponent implements OnInit {
       this.userService.message('Las contraseñas tienen que coincidir')
     }
     else {
-      this.userService.register(this.email.value, this.password.value)
+      this.userService.register(this.model.email, this.model.contraseña)
         .then(res => {
           this.dialogRef.close()
           const client: client = {
@@ -71,7 +110,7 @@ export class UserRegisterComponent implements OnInit {
         })
 
         .catch(error => {
-          this.userService.message(error + ' Posiblemente el correo que ingreso no exista'); console.log(error)
+          this.userService.message(error + 'Posiblemente el correo que ingreso no exista'); console.log(error)
         });
 
     }

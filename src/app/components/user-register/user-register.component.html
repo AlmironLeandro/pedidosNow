@@ -1,4 +1,11 @@
-<h2 mat-dialog-title>Registrate</h2>
+<form [formGroup]="form" class="col-12" (ngSubmit)="onSubmit()">
+    <formly-form [form]="form" [options]="options" [fields]="fields" [model]="model"></formly-form>
+    <div class="d-flex justify-content-end p-2">
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Crear cuenta</button>
+    </div>
+</form>
+
+<!-- <h2 mat-dialog-title>Registrate<h2>
 <mat-dialog-content class="mat-typography">
     <ng-container>
         <form class="example-form">
@@ -6,7 +13,7 @@
                 <mat-label>Correo electronico:</mat-label>
                 <input type="email" matInput [formControl]="email" [errorStateMatcher]="matcher"
                     placeholder="Ejem. pat@example.com">
-                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+              
                 <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
                     Introducir un email valido.
                 </mat-error>
@@ -19,7 +26,7 @@
                 <mat-label>Contraseña:</mat-label>
                 <input type="password" matInput [formControl]="password" [errorStateMatcher]="matcher"
                     placeholder="Contraseña">
-                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+
                 <mat-error *ngIf="isGreater() && !password.hasError('required')">
                     Se solicita una contraseña de al menos 6 caracteres.
                 </mat-error>
@@ -32,7 +39,7 @@
                 <mat-label>Confirmacion:</mat-label>
                 <input type="password" matInput [formControl]="rePassword" [errorStateMatcher]="matcher"
                     placeholder="Contraseña">
-                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+              
                 <mat-error *ngIf="!passwordMatch() && !rePassword.hasError('required')">
                     La contraseña debe coincidir
                 </mat-error>
@@ -50,4 +57,4 @@
         <button type="submit" class="btn btn-primary" (click)="onSubmit()"
             [disabled]="!(email.valid && password.valid && rePassword.valid && passwordMatch() )">Crear cuenta</button>
     </div>
-</mat-dialog-actions>
+</mat-dialog-actions> -->

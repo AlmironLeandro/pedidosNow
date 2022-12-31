@@ -1,24 +1,22 @@
 <app-navbar [login]="login" class="col-12"></app-navbar>
 <app-shopping-cart class="col-12"></app-shopping-cart>
 <div class="box flex-wrap d-flex container justify-content-center justify-content-lg-start">
-        <div class="box-item  animate__animated animate__backInLeft  " *ngFor="let item of hamburgers let i = index;">
+    <div class="box-item  animate__animated animate__backInLeft  " *ngFor="let item of hamburgers let i = index;">
 
-            <div class="item-atributes">
-                <div class="icon-plus">
-                    <i class="uil uil-plus"></i>
-                </div>
-                <div class="item">
-                    <p>{{item.name}}</p>
-                </div>
-                <div class="item">
-                    <p>{{'Precio: $'+item.price}}</p>
-                </div>
+        <div class="item-atributes">
+            <div class="icon-plus">
+                <i class="uil uil-plus"></i>
             </div>
-            <img class="img-hamburger" [src]=item.ulrImg alt="hamburger">
-            <div class="buttom text-center">
-                <button type="button" class="btn btn-dark" (click)="addOrder(item)">Agregar al <br> carrito</button>
+            <div class="item">
+                <p>{{item.name}}</p>
+            </div>
+            <div class="item">
+                <p>{{'Precio: $'+item.price}}</p>
             </div>
         </div>
-     
-
+        <img class="img-hamburger" [src]=item.ulrImg alt="hamburger">
+        <div class="buttom text-center">
+            <button type="button" class="btn btn-dark" (click)="addOrder(item)">Agregar al <br> carrito</button>
+        </div>
+    </div>
 </div>
