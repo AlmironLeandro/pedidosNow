@@ -1,27 +1,21 @@
 # PedidosNow
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
 
-## Development server
+# Errores
+## Si tenes el siguiente error
+![image](https://user-images.githubusercontent.com/48962903/210418576-986b2022-4239-45a2-b512-f7514cdfe294.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+##Solucion
 
-## Code scaffolding
+Tenes que ir o seleccionar ##node_modules/@angular/fire/compat/firestore/interfaces.d.ts
+Una vez ahi tenes que agrega al interfaz <t> al final de cada linea.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+##Antes 
+![image](https://user-images.githubusercontent.com/48962903/210418944-63102ddb-c45f-4883-8361-f28f85306c15.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+##Despues 
+![image](https://user-images.githubusercontent.com/48962903/210419023-769d91e4-318d-4d4f-86a6-fd19f44f3af9.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
