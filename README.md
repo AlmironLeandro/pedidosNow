@@ -1,7 +1,7 @@
 # PedidosNow
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
-**-Recorda hacer un npm install para installar los modulos**
+#####-Recorda hacer un npm install para installar los modulos
 # Errores
 ## Si tenes el siguiente **error** :
 ![image](https://user-images.githubusercontent.com/48962903/210418576-986b2022-4239-45a2-b512-f7514cdfe294.png)
