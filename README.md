@@ -6,11 +6,10 @@ Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-
 ## Si tenes el siguiente error
 ![image](https://user-images.githubusercontent.com/48962903/210418576-986b2022-4239-45a2-b512-f7514cdfe294.png)
 
-## Solucion
+## Solución de compatibilidad con la libreria **firebase/compat**
 
-Tenes que ir o seleccionar :
-- Node_modules/@angular/fire/compat/firestore/interfaces.d.ts
-- Una vez ahi tenes que agrega al interfaz <t> al final de cada linea.
+- Tenes que ir al archivo node_modules/@angular/fire/compat/firestore/interfaces.d.ts
+- Una vez ahi tenes que agregar la interfaz <t> al final de cada linea como se muestra en la imagen a continuación.
 
 
 ## Antes 
