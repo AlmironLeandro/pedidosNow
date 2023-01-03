@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { HamburgerService } from '../../shared/hamburger.service';
+import { HamburgersPageActions } from '../../state';
 
 @Component({
   selector: 'app-btn-cell-renderer',
@@ -10,7 +12,7 @@ import { HamburgerService } from '../../shared/hamburger.service';
   styleUrls: ['./btn-cell-renderer.component.scss']
 })
 export class BtnCellRendererComponent implements ICellRendererAngularComp {
-  constructor(private serviceHamburger: HamburgerService){}
+  constructor(private serviceHamburger: HamburgerService, private store: Store) { }
   private params: any;
 
   agInit(params: any): void {
@@ -18,9 +20,7 @@ export class BtnCellRendererComponent implements ICellRendererAngularComp {
   }
 
   btnClickedHandler(event: any) {
-    // console.log(this.params.value);
-    
-    this.serviceHamburger.removeHamburger(this.params.value)
+    this.store.dispatch(HamburgersPageActions.removeProduct({ idData: this.params.value }))
   }
 
   refresh() {

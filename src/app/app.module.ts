@@ -17,11 +17,6 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat'
 
 
-
-//Arquitecture components
-// import { StoreModule } from '@ngrx/store';
-// import { hamburgerReducer } from './components/ngrx/hamburger.reducer';
-
 //Components
 import { AppComponent } from './app.component';
 import { BtnCellRendererComponent } from './components/shopping-cart/btn-cell-renderer/btn-cell-renderer.component';
@@ -42,6 +37,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormlyHorizontalWrapper } from './components/user-register/horizontal-wrapper';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HamburgerEffects } from './components/state';
+import { hamburgersReducer, HamburgersStateFeatureKey } from './components/state/hamburger.reducer';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,6 @@ import { FormlyHorizontalWrapper } from './components/user-register/horizontal-w
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    // StoreModule.forRoot({ hamburger: hamburgerReducer }),
     AgGridModule,
     provideAuth(() => getAuth()),
     MatButtonModule,
@@ -82,7 +80,12 @@ import { FormlyHorizontalWrapper } from './components/user-register/horizontal-w
       wrappers: [{ name: 'form-field-horizontal', component: FormlyHorizontalWrapper }],
       validationMessages: [{ name: 'required', message: 'Este campo es requerido' }],
     }),
-    FormlyBootstrapModule
+    FormlyBootstrapModule,
+    StoreModule.forRoot({
+      hamburgersState: hamburgersReducer
+    }),
+    StoreModule.forFeature(HamburgersStateFeatureKey, hamburgersReducer),
+    EffectsModule.forRoot([HamburgerEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
